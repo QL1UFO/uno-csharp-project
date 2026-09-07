@@ -1,1 +1,11 @@
-﻿using System;
+﻿using System; 
+
+static class Program
+{
+    public static void Main()
+    {
+        
+        Console.WriteLine("Välkomen till UNO!");
+
+    }
+}
