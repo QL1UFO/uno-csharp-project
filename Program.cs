@@ -33,6 +33,7 @@ namespace uno_csharp_project
             Card drawnCard = deck.Draw();
             Console.WriteLine($"Draget kort: {drawnCard}");
             Console.WriteLine($"Kort kvar: {deck.Count}");
+            
         }
     }
 }
