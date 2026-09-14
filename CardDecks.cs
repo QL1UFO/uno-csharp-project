@@ -73,5 +73,10 @@ namespace uno_csharp_project
             cards.RemoveAt(0);
             return topCard;
         }
+
+        public Card DrawTopCard()
+        {
+            return null;
+        }
     }
 }
