@@ -65,13 +65,26 @@ namespace uno_csharp_project
         public Card Draw()
         {
             if (cards.Count == 0)
-            {
                 throw new InvalidOperationException("Draghögen är tom!");
-            }
 
-            Card topCard = cards[0];
-            cards.RemoveAt(0);
+            int lastIndex = cards.Count - 1;
+            Card topCard = cards[lastIndex];
+            cards.RemoveAt(lastIndex);
             return topCard;
+        }
+
+        public void Refill(List<Card> discardedCards)
+        {
+            cards.AddRange(discardedCards);
+            Shuffle();
+        }
+
+        public List<Card> DrawMultiple(int count)
+        {
+            var drawn = new List<Card>();
+            for (int i = 0; i < count; i++)
+                drawn.Add(Draw());
+            return drawn;
         }
     }
 }

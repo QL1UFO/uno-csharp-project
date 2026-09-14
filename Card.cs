@@ -57,5 +57,13 @@ namespace uno_csharp_project
 
             return Type == topCard.Type; // t.ex. Skip mot Skip, Reverse mot Reverse
         }
+
+        public void SetChosenColor(CardColor color)
+        {
+            if (Type != CardType.Wild && Type != CardType.WildDrawFour)
+                throw new InvalidOperationException("Bara Wild-kort kan få en vald färg.");
+
+            Color = color;
+        }
     }
 }
