@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-using System;
 
 namespace uno_csharp_project
 {
@@ -27,7 +26,7 @@ namespace uno_csharp_project
 
     internal class Card
     {
-        public CardColor Color { get; set; }
+        private CardColor Color { get; set; }
         public CardType Type { get; }
         public int? Number { get; }   // bara relevant om Type == Number, annars null
 
@@ -43,6 +42,28 @@ namespace uno_csharp_project
             return Type == CardType.Number
                 ? $"{Color} {Number}"
                 : $"{Color} {Type}";
+        }
+
+        public bool CanBePlayedOn(Card topCard)
+        {
+            if (Type == CardType.Wild || Type == CardType.WildDrawFour)
+                return true; // Wild-kort går alltid att lägga
+
+            if (Color == topCard.Color)
+                return true;
+
+            if (Type == CardType.Number && topCard.Type == CardType.Number)
+                return Number == topCard.Number;
+
+            return Type == topCard.Type; // t.ex. Skip mot Skip, Reverse mot Reverse
+        }
+
+        public void SetChosenColor(CardColor color)
+        {
+            if (Type != CardType.Wild && Type != CardType.WildDrawFour)
+                throw new InvalidOperationException("Bara Wild-kort kan få en vald färg.");
+
+            Color = color;
         }
     }
 }
