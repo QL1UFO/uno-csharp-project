@@ -86,5 +86,10 @@ namespace uno_csharp_project
                 drawn.Add(Draw());
             return drawn;
         }
+
+        public Card DrawTopCard()
+        {
+            return null;
+        }
     }
 }
