@@ -48,5 +48,11 @@ namespace uno_csharp_project
         {
             return $"{Name} ({Hand.Count} kort)";
         }
+
+        public void DrawCards(IEnumerable<Card> cards)
+        {
+            foreach (var card in cards)
+                AddCard(card);
+        }
     }
 }

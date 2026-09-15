@@ -26,7 +26,7 @@ namespace uno_csharp_project
 
     internal class Card
     {
-        private CardColor Color { get; set; }
+        public CardColor Color { get; private set; }
         public CardType Type { get; }
         public int? Number { get; }   // bara relevant om Type == Number, annars null
 

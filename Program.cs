@@ -27,12 +27,20 @@ namespace uno_csharp_project
             int numberOfPlayers = GetNumberOfPlayers();
 
             Console.WriteLine($"Spelet startar med {numberOfPlayers} spelare!");
-            CardDecks deck = new CardDecks();
-            Console.WriteLine($"Antal kort i leken: {deck.Count}");
 
-            Card drawnCard = deck.Draw();
-            Console.WriteLine($"Draget kort: {drawnCard}");
-            Console.WriteLine($"Kort kvar: {deck.Count}");
+            var players = new List<Player>();
+            for (int i = 1; i <= numberOfPlayers; i++)
+            {
+                Console.WriteLine($"Ange namn för spelare {i}:");
+                string? name = Console.ReadLine();
+                players.Add(new Player(string.IsNullOrWhiteSpace(name) ? $"Spelare {i}" : name));
+            }
+
+            CardDecks deck = new CardDecks();
+            Game game = new Game(players, deck);
+            game.Start();
+
+            Console.WriteLine($"Översta kortet: {game.TopCard}");
 
         }
     }
