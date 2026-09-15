@@ -1,39 +1,26 @@
 ﻿using System;
+
 namespace uno_csharp_project
 {
-    public static class Program
+    internal class Program
     {
-        private static int GetNumberOfPlayers()
+        static void Main(string[] args)
         {
-            int players;
-
-            while (true)
-            {
-                Console.WriteLine("Skriv in antal spelare (2-4):");
-                string? input = Console.ReadLine();
-
-                if (int.TryParse(input, out players) && players >= 2 && players <= 4)
-                {
-                    return players;
-                }
-
-                Console.WriteLine("Ogiltigt antal. Ange ett tal mellan 2 och 4.");
-            }
-        }
-        public static void Main()
-        {
-
-            Console.WriteLine("Välkomen till UNO!");
-            int numberOfPlayers = GetNumberOfPlayers();
-
-            Console.WriteLine($"Spelet startar med {numberOfPlayers} spelare!");
+            // Skapa kortleken
             CardDecks deck = new CardDecks();
-            Console.WriteLine($"Antal kort i leken: {deck.Count}");
 
-            Card drawnCard = deck.Draw();
-            Console.WriteLine($"Draget kort: {drawnCard}");
-            Console.WriteLine($"Kort kvar: {deck.Count}");
+            Console.WriteLine($"Kortleken är klar med {deck.Count} kort!\n");
 
+            // Dra och skriv ut de första 5 korten för att testa färger och typer
+            Console.WriteLine("Drar 5 slumpmässiga kort:");
+            for (int i = 0; i < 5; i++)
+            {
+                Card drawnCard = deck.Draw();
+                drawnCard.PrintCard();
+            }
+
+            Console.WriteLine("\nTryck på valfri tangent för att avsluta...");
+            Console.ReadKey();
         }
     }
 }
