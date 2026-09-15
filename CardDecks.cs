@@ -89,7 +89,7 @@ namespace uno_csharp_project
 
         public Card DrawTopCard()
         {
-            return null;
+            return Draw();
         }
     }
 }
