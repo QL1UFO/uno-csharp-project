@@ -8,8 +8,13 @@ namespace uno_csharp_project
         public CardType Type { get; set; }
         public int? Number { get; set; }
 
-        // Konstruktor för talkort (t.ex. Red 0, Yellow 5)
-        public Card(CardColor color, CardType type, int number)
+    internal class Card
+    {
+        public CardColor Color { get; private set; }
+        public CardType Type { get; }
+        public int? Number { get; }   // bara relevant om Type == Number, annars null
+
+        public Card(CardColor color, CardType type, int? number = null)
         {
             Color = color;
             Type = type;

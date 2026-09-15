@@ -18,6 +18,28 @@ namespace uno_csharp_project
                 Card drawnCard = deck.Draw();
                 drawnCard.PrintCard();
             }
+        }
+        public static void Main()
+        {
+
+            Console.WriteLine("Välkomen till UNO!");
+            int numberOfPlayers = GetNumberOfPlayers();
+
+            Console.WriteLine($"Spelet startar med {numberOfPlayers} spelare!");
+
+            var players = new List<Player>();
+            for (int i = 1; i <= numberOfPlayers; i++)
+            {
+                Console.WriteLine($"Ange namn för spelare {i}:");
+                string? name = Console.ReadLine();
+                players.Add(new Player(string.IsNullOrWhiteSpace(name) ? $"Spelare {i}" : name));
+            }
+
+            CardDecks deck = new CardDecks();
+            Game game = new Game(players, deck);
+            game.Start();
+
+            Console.WriteLine($"Översta kortet: {game.TopCard}");
 
             Console.WriteLine("\nTryck på valfri tangent för att avsluta...");
             Console.ReadKey();
