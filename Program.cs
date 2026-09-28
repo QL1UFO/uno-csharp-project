@@ -21,7 +21,6 @@ namespace uno_csharp_project
         }
         public static void Main()
         {
-
             Console.WriteLine("Välkomen till UNO!");
             int numberOfPlayers = GetNumberOfPlayers();
 
